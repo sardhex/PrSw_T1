@@ -72,4 +72,20 @@ class RegistroPrestamoTest {
         
         assertEquals("Ingrese una fecha de préstamo válida", resultado);
     }
+
+    @Test
+    @DisplayName("should return an error if the return date is invalid.")
+    void shouldReturnErrorIfReturnDateIsInvalid() {
+        RegistroPrestamo registro = new RegistroPrestamo();
+        
+        String codigoPrestamo = "PR1234";
+        String codigoLibro = "A1B2C";
+        String nombreUsuario = "Juan";
+        LocalDate fechaPrestamo = LocalDate.now();
+        LocalDate fechaDevolucion = LocalDate.now();
+        
+        String resultado = registro.registrar(codigoPrestamo, codigoLibro, nombreUsuario, fechaPrestamo, fechaDevolucion);
+        
+        assertEquals("La fecha de devolución debe ser posterior a la fecha de préstamo", resultado);
+    }
 }
