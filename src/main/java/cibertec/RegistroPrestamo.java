@@ -11,7 +11,7 @@ public class RegistroPrestamo {
             return "Ingrese un código de préstamo válido";
         }
 
-        if (codigoLibro == null || !codigoLibro.matches("^[a-zA-Z0-9]{5}$")) {
+        if (!esCodigoLibroValido(codigoLibro)) {
             return "Ingrese un código de libro válido";
         }
 
@@ -20,5 +20,9 @@ public class RegistroPrestamo {
 
     private boolean esCodigoPrestamoValido(String codigo) {
         return codigo != null && codigo.matches("^[A-Z]{2}\\d{4}$");
+    }
+
+    private boolean esCodigoLibroValido(String codigo) {
+        return codigo != null && codigo.matches("^[a-zA-Z0-9]{5}$");
     }
 }
