@@ -19,7 +19,7 @@ public class RegistroPrestamo {
             return "El nombre del usuario debe tener al menos cuatro caracteres alfabéticos";
         }
 
-        if (fechaPrestamo == null || fechaPrestamo.isAfter(LocalDate.now())) {
+        if (!esFechaPrestamoValida(fechaPrestamo)) {
             return "Ingrese una fecha de préstamo válida";
         }
 
@@ -36,5 +36,9 @@ public class RegistroPrestamo {
 
     private boolean esNombreUsuarioValido(String nombre) {
         return nombre != null && nombre.matches("^[a-zA-Z]{4,}$");
+    }
+
+    private boolean esFechaPrestamoValida(LocalDate fecha) {
+        return fecha != null && !fecha.isAfter(LocalDate.now());
     }
 }
