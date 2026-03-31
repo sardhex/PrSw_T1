@@ -56,4 +56,20 @@ class RegistroPrestamoTest {
         
         assertEquals("El nombre del usuario debe tener al menos cuatro caracteres alfabéticos", resultado);
     }
+
+    @Test
+    @DisplayName("should return an error if the loan date is invalid.")
+    void shouldReturnErrorIfLoanDateIsInvalid() {
+        RegistroPrestamo registro = new RegistroPrestamo();
+        
+        String codigoPrestamo = "PR1234";
+        String codigoLibro = "A1B2C";
+        String nombreUsuario = "Juan";
+        LocalDate fechaPrestamo = LocalDate.now().plusDays(1);
+        LocalDate fechaDevolucion = LocalDate.now().plusDays(5);
+        
+        String resultado = registro.registrar(codigoPrestamo, codigoLibro, nombreUsuario, fechaPrestamo, fechaDevolucion);
+        
+        assertEquals("Ingrese una fecha de préstamo válida", resultado);
+    }
 }
