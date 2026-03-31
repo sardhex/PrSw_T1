@@ -23,7 +23,7 @@ public class RegistroPrestamo {
             return "Ingrese una fecha de préstamo válida";
         }
 
-        if (fechaDevolucion == null || !fechaDevolucion.isAfter(fechaPrestamo)) {
+        if (!esFechaDevolucionValida(fechaDevolucion, fechaPrestamo)) {
             return "La fecha de devolución debe ser posterior a la fecha de préstamo";
         }
 
@@ -44,5 +44,9 @@ public class RegistroPrestamo {
 
     private boolean esFechaPrestamoValida(LocalDate fecha) {
         return fecha != null && !fecha.isAfter(LocalDate.now());
+    }
+
+    private boolean esFechaDevolucionValida(LocalDate fechaDevolucion, LocalDate fechaPrestamo) {
+        return fechaDevolucion != null && fechaDevolucion.isAfter(fechaPrestamo);
     }
 }
