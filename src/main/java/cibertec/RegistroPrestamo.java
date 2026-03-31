@@ -11,6 +11,10 @@ public class RegistroPrestamo {
             return "Ingrese un código de préstamo válido";
         }
 
+        if (codigoLibro == null || !codigoLibro.matches("^[a-zA-Z0-9]{5}$")) {
+            return "Ingrese un código de libro válido";
+        }
+
         return "El préstamo ha sido registrado correctamente";
     }
 
