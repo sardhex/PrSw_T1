@@ -88,4 +88,20 @@ class RegistroPrestamoTest {
         
         assertEquals("La fecha de devolución debe ser posterior a la fecha de préstamo", resultado);
     }
+
+    @Test
+    @DisplayName("should return an error if the fields are empty.")
+    void shouldReturnErrorIfFieldsAreEmpty() {
+        RegistroPrestamo registro = new RegistroPrestamo();
+        
+        String codigoPrestamo = "";
+        String codigoLibro = "A1B2C";
+        String nombreUsuario = "Juan";
+        LocalDate fechaPrestamo = LocalDate.now();
+        LocalDate fechaDevolucion = LocalDate.now().plusDays(5);
+        
+        String resultado = registro.registrar(codigoPrestamo, codigoLibro, nombreUsuario, fechaPrestamo, fechaDevolucion);
+        
+        assertEquals("Debe ingresar todos los datos requeridos", resultado);
+    }
 }
