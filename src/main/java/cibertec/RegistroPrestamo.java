@@ -7,9 +7,7 @@ public class RegistroPrestamo {
     public String registrar(String codigoPrestamo, String codigoLibro, String nombreUsuario, LocalDate fechaPrestamo,
             LocalDate fechaDevolucion) {
 
-        if (codigoPrestamo == null || codigoPrestamo.isEmpty() || codigoLibro == null || codigoLibro.isEmpty()
-                || nombreUsuario == null || nombreUsuario.isEmpty() || fechaPrestamo == null
-                || fechaDevolucion == null) {
+        if (algunCampoVacio(codigoPrestamo, codigoLibro, nombreUsuario, fechaPrestamo, fechaDevolucion)) {
             return "Debe ingresar todos los datos requeridos";
         }
 
@@ -54,5 +52,12 @@ public class RegistroPrestamo {
 
     private boolean esFechaDevolucionValida(LocalDate fechaDevolucion, LocalDate fechaPrestamo) {
         return fechaDevolucion != null && fechaDevolucion.isAfter(fechaPrestamo);
+    }
+
+    private boolean algunCampoVacio(String codigoPrestamo, String codigoLibro, String nombreUsuario,
+            LocalDate fechaPrestamo, LocalDate fechaDevolucion) {
+        return codigoPrestamo == null || codigoPrestamo.isEmpty() || codigoLibro == null || codigoLibro.isEmpty()
+                || nombreUsuario == null || nombreUsuario.isEmpty() || fechaPrestamo == null
+                || fechaDevolucion == null;
     }
 }
