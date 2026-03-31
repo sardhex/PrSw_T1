@@ -15,7 +15,7 @@ public class RegistroPrestamo {
             return "Ingrese un código de libro válido";
         }
 
-        if (nombreUsuario == null || !nombreUsuario.matches("^[a-zA-Z]{4,}$")) {
+        if (!esNombreUsuarioValido(nombreUsuario)) {
             return "El nombre del usuario debe tener al menos cuatro caracteres alfabéticos";
         }
 
@@ -28,5 +28,9 @@ public class RegistroPrestamo {
 
     private boolean esCodigoLibroValido(String codigo) {
         return codigo != null && codigo.matches("^[a-zA-Z0-9]{5}$");
+    }
+
+    private boolean esNombreUsuarioValido(String nombre) {
+        return nombre != null && nombre.matches("^[a-zA-Z]{4,}$");
     }
 }
