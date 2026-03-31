@@ -15,6 +15,10 @@ public class RegistroPrestamo {
             return "Ingrese un código de libro válido";
         }
 
+        if (nombreUsuario == null || !nombreUsuario.matches("^[a-zA-Z]{4,}$")) {
+            return "El nombre del usuario debe tener al menos cuatro caracteres alfabéticos";
+        }
+
         return "El préstamo ha sido registrado correctamente";
     }
 
