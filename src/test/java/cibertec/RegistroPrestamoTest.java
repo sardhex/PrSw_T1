@@ -24,4 +24,20 @@ class RegistroPrestamoTest {
         
         assertEquals("Ingrese un código de préstamo válido", resultado);
     }
+
+    @Test
+    @DisplayName("should return an error if the book code is invalid.")
+    void shouldReturnErrorIfBookCodeIsInvalid() {
+        RegistroPrestamo registro = new RegistroPrestamo();
+        
+        String codigoPrestamo = "PR1234";
+        String codigoLibro = "A1B2";
+        String nombreUsuario = "Juan";
+        LocalDate fechaPrestamo = LocalDate.now();
+        LocalDate fechaDevolucion = LocalDate.now().plusDays(5);
+        
+        String resultado = registro.registrar(codigoPrestamo, codigoLibro, nombreUsuario, fechaPrestamo, fechaDevolucion);
+        
+        assertEquals("Ingrese un código de libro válido", resultado);
+    }
 }
