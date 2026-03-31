@@ -23,6 +23,10 @@ public class RegistroPrestamo {
             return "Ingrese una fecha de préstamo válida";
         }
 
+        if (fechaDevolucion == null || !fechaDevolucion.isAfter(fechaPrestamo)) {
+            return "La fecha de devolución debe ser posterior a la fecha de préstamo";
+        }
+
         return "El préstamo ha sido registrado correctamente";
     }
 
