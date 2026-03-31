@@ -7,6 +7,12 @@ public class RegistroPrestamo {
     public String registrar(String codigoPrestamo, String codigoLibro, String nombreUsuario, LocalDate fechaPrestamo,
             LocalDate fechaDevolucion) {
 
+        if (codigoPrestamo == null || codigoPrestamo.isEmpty() || codigoLibro == null || codigoLibro.isEmpty()
+                || nombreUsuario == null || nombreUsuario.isEmpty() || fechaPrestamo == null
+                || fechaDevolucion == null) {
+            return "Debe ingresar todos los datos requeridos";
+        }
+
         if (!esCodigoPrestamoValido(codigoPrestamo)) {
             return "Ingrese un código de préstamo válido";
         }
